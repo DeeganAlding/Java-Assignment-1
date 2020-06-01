@@ -31,6 +31,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import java.awt.Color;
 import java.awt.Toolkit;
+import javax.swing.JLabel;
 
 public class GUI extends JFrame {
 	
@@ -46,22 +47,6 @@ public class GUI extends JFrame {
 				"Country Names", "Coronavirus", "Test", "Symptoms", "Cure"
 			}
 		);
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					GUI frame = new GUI();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	
 	public GUI(ArrayList<Sort> sort) {
@@ -146,7 +131,7 @@ public class GUI extends JFrame {
 		
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(138, 43, 226));
+		panel_1.setBackground(new Color(127, 255, 0));
 		tabbedPane.addTab("Graph", null, panel_1, null);
 		tabbedPane.setBackgroundAt(1, Color.LIGHT_GRAY);
 		
@@ -154,12 +139,85 @@ public class GUI extends JFrame {
 		panel_1.add(panel_3);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(75, 0, 130));
+		panel_2.setBackground(new Color(205, 133, 63));
 		tabbedPane.addTab("Calculator", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Max Coronavirus Searches:");
+		lblNewLabel.setBounds(10, 11, 266, 32);
+		panel_2.add(lblNewLabel);
 		tabbedPane.setBackgroundAt(2, Color.LIGHT_GRAY);
+		lblNewLabel.setText("Max Coronavirus Searches: " + findMaxCoronavirus());
+		
+		JLabel lblNewLabel_1 = new JLabel("Max Coronavirus Searches: ");
+		lblNewLabel_1.setBounds(10, 41, 208, 14);
+		panel_2.add(lblNewLabel_1);
+		lblNewLabel_1.setText("Min Coronavirus Searches: " + findMinCoronavirus());
+		
+		JLabel lblNewLabel_2 = new JLabel("Average Coronavirus Searches:");
+		lblNewLabel_2.setBounds(10, 63, 191, 14);
+		panel_2.add(lblNewLabel_2);
+		lblNewLabel_2.setText("Average Coronavirus Searches: " + findAverageCoronavirus());
 		
 		createAPie();
 	}
+	
+	public String findAverageCoronavirus() 
+	{
+		int average = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = + sort.get(i).getCoronavirus(); 
+			average = test + average;								
+		}
+		
+		average = average / 250;
+	
+		String number = Integer.toString(average);
+		
+		return number;					
+	}
+	
+	public String findMinCoronavirus() 
+	{
+		int min = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getCoronavirus(); 
+			
+			if (test < min)
+			{
+				min = test;
+			}						
+		}
+		
+		String number = Integer.toString(min);
+		
+		return number;					
+	}
+	
+	
+	public String findMaxCoronavirus() 
+	{
+		int max = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getCoronavirus(); 
+			
+			if (test > max)
+			{
+				max = test;
+			}						
+		}
+		
+		String number = Integer.toString(max);
+		
+		return number;					
+	}
+	
 	
 	public void sortCoronavirusOrder()
 	{
