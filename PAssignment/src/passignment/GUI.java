@@ -3,6 +3,8 @@ package passignment;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import javax.swing.JFrame;
@@ -32,6 +34,7 @@ import javax.swing.JFormattedTextField;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class GUI extends JFrame {
 	
@@ -78,27 +81,28 @@ public class GUI extends JFrame {
 		table.setModel(tm);
 		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton = new JButton("Reset");
+		JButton btnNewButton = new JButton("Redraw Table");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				drawTable();
 			}
 		});
-		btnNewButton.setBounds(20, 370, 89, 23);
+		btnNewButton.setBounds(10, 370, 117, 23);
 		panel.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Sort Coronavirus");
+		JButton btnNewButton_1 = new JButton("Reverse Order");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sortCoronavirusOrder();
+			Collections.reverse(sort);
+			drawTable();
 			}
 		});
-		btnNewButton_1.setBounds(121, 370, 113, 23);
+		btnNewButton_1.setBounds(137, 370, 142, 23);
 		panel.add(btnNewButton_1);
 		
 		JFormattedTextField frmtdtxtfldEnterCountryHere = new JFormattedTextField();
 		frmtdtxtfldEnterCountryHere.setText("Country Name");
-		frmtdtxtfldEnterCountryHere.setBounds(244, 371, 113, 20);
+		frmtdtxtfldEnterCountryHere.setBounds(304, 371, 113, 20);
 		panel.add(frmtdtxtfldEnterCountryHere);
 		
 		JButton btnNewButton_2 = new JButton("Check");
@@ -124,7 +128,7 @@ public class GUI extends JFrame {
 				}							
 			}
 		});
-		btnNewButton_2.setBounds(367, 370, 89, 23);
+		btnNewButton_2.setBounds(427, 370, 89, 23);
 		panel.add(btnNewButton_2);
 		
 		drawTable();
@@ -144,23 +148,254 @@ public class GUI extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Max Coronavirus Searches:");
-		lblNewLabel.setBounds(10, 11, 266, 32);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(10, 53, 266, 32);
 		panel_2.add(lblNewLabel);
 		tabbedPane.setBackgroundAt(2, Color.LIGHT_GRAY);
 		lblNewLabel.setText("Max Coronavirus Searches: " + findMaxCoronavirus());
 		
 		JLabel lblNewLabel_1 = new JLabel("Max Coronavirus Searches: ");
-		lblNewLabel_1.setBounds(10, 41, 208, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(10, 81, 323, 19);
 		panel_2.add(lblNewLabel_1);
 		lblNewLabel_1.setText("Min Coronavirus Searches: " + findMinCoronavirus());
 		
 		JLabel lblNewLabel_2 = new JLabel("Average Coronavirus Searches:");
-		lblNewLabel_2.setBounds(10, 63, 191, 14);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(10, 102, 323, 19);
 		panel_2.add(lblNewLabel_2);
 		lblNewLabel_2.setText("Average Coronavirus Searches: " + findAverageCoronavirus());
 		
+		JLabel lblNewLabel_3 = new JLabel("Calculations");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblNewLabel_3.setBounds(10, 11, 323, 45);
+		panel_2.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_5 = new JLabel("Min Test Searches: ");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5.setBounds(10, 154, 276, 26);
+		panel_2.add(lblNewLabel_5);
+		lblNewLabel_5.setText("Min Test Searches: " + findMinTest());
+		
+		JLabel lblNewLabel_4 = new JLabel("Max Test Searches: ");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4.setBounds(10, 132, 292, 32);
+		panel_2.add(lblNewLabel_4);
+		lblNewLabel_4.setText("Max Test Searches: " + findMaxTest());
+		
+		JLabel lblNewLabel_6 = new JLabel("Average Test Searches:");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_6.setBounds(10, 175, 266, 25);
+		panel_2.add(lblNewLabel_6);
+		lblNewLabel_6.setText("Average Test Searches: " + findAverageTest());
+		
+		JLabel lblNewLabel_7 = new JLabel("Max Symptoms Searches:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_7.setBounds(10, 211, 323, 32);
+		panel_2.add(lblNewLabel_7);
+		lblNewLabel_7.setText("Max Symptoms Searches: " + findMaxSymptoms());
+		
+		JLabel lblNewLabel_8 = new JLabel("Min Symptoms Searches:");
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_8.setBounds(10, 236, 292, 26);
+		panel_2.add(lblNewLabel_8);
+		lblNewLabel_8.setText("Min Symptoms Searches: " + findMinSymptoms());
+		
+		JLabel lblNewLabel_9 = new JLabel("Average Symptoms Searches:");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_9.setBounds(10, 258, 363, 26);
+		panel_2.add(lblNewLabel_9);
+		lblNewLabel_9.setText("Average Symptoms Searches: " + findAverageSymptoms());
+		
+		JLabel lblNewLabel_10 = new JLabel("Max Cure Searches:");
+		lblNewLabel_10.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_10.setBounds(10, 297, 314, 26);
+		panel_2.add(lblNewLabel_10);
+		lblNewLabel_10.setText("Max Cure Searches: " + findMaxCure());
+		
+		JLabel lblNewLabel_11 = new JLabel("Min Cure Searches:");
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_11.setBounds(10, 319, 276, 26);
+		panel_2.add(lblNewLabel_11);
+		lblNewLabel_11.setText("Min Cure Searches: " + findMinCure());
+		
+		JLabel lblNewLabel_12 = new JLabel("Average Cure Searches:");
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_12.setBounds(10, 344, 292, 19);
+		panel_2.add(lblNewLabel_12);
+		lblNewLabel_12.setText("Average Cure Searches: " + findAverageCure());
+		
 		createAPie();
 	}
+	
+	public String findAverageCure() 
+	{
+		int average = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = + sort.get(i).getCure(); 
+			average = test + average;								
+		}
+		
+		average = average / 250;
+	
+		String number = Integer.toString(average);
+		
+		return number;					
+	}
+	
+	public String findMinCure() 
+	{
+		int min = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getCure(); 
+			
+			if (test < min)
+			{
+				min = test;
+			}						
+		}
+		
+		String number = Integer.toString(min);
+		
+		return number;					
+	}
+	
+	
+	public String findMaxCure() 
+	{
+		int max = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getCure(); 
+			
+			if (test > max)
+			{
+				max = test;
+			}						
+		}
+		
+		String number = Integer.toString(max);
+		
+		return number;					
+	}
+	
+	public String findAverageSymptoms() 
+	{
+		int average = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = + sort.get(i).getSymptoms(); 
+			average = test + average;								
+		}
+		
+		average = average / 250;
+	
+		String number = Integer.toString(average);
+		
+		return number;					
+	}
+	
+	public String findMinSymptoms() 
+	{
+		int min = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getSymptoms(); 
+			
+			if (test < min)
+			{
+				min = test;
+			}						
+		}
+		
+		String number = Integer.toString(min);
+		
+		return number;					
+	}
+	
+	
+	public String findMaxSymptoms() 
+	{
+		int max = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getSymptoms(); 
+			
+			if (test > max)
+			{
+				max = test;
+			}						
+		}
+		
+		String number = Integer.toString(max);
+		
+		return number;					
+	}
+	
+	public String findAverageTest() 
+	{
+		int average = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = + sort.get(i).getTest(); 
+			average = test + average;								
+		}
+		
+		average = average / 250;
+	
+		String number = Integer.toString(average);
+		
+		return number;					
+	}
+	
+	public String findMinTest() 
+	{
+		int min = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getTest(); 
+			
+			if (test < min)
+			{
+				min = test;
+			}						
+		}
+		
+		String number = Integer.toString(min);
+		
+		return number;					
+	}
+	
+	
+	public String findMaxTest() 
+	{
+		int max = 0;
+		
+		for (int i = 0; i < 250; i++) {
+			
+			int test = sort.get(i).getTest(); 
+			
+			if (test > max)
+			{
+				max = test;
+			}						
+		}
+		
+		String number = Integer.toString(max);
+		
+		return number;					
+	}
+	
 	
 	public String findAverageCoronavirus() 
 	{
@@ -218,32 +453,6 @@ public class GUI extends JFrame {
 		return number;					
 	}
 	
-	
-	public void sortCoronavirusOrder()
-	{
-		ArrayList<String> sortData = new ArrayList<>();
-		int max = 0;
-		
-		tm.setRowCount(0);
-		for (int i = 0; i < 250; i++) {
-			Object[] object = new Object[5];
-			object[0]= sort.get(i).getCountry();
-			object[1]= sort.get(i).getCoronavirus();
-			object[2]= sort.get(i).getTest();
-			object[3]= sort.get(i).getSymptoms();
-			object[4]= sort.get(i).getCure();
-			
-			int test = Integer.parseInt((String) object[1]); 
-			
-			if (test >= max)
-			{
-				max = test;
-				tm.addRow(object);
-			}			
-			
-		}
-	}
-	
 	public void drawTable()
 	{
 	
@@ -273,9 +482,8 @@ public class GUI extends JFrame {
 		JFreeChart chart = ChartFactory.createPieChart("Coronavirus Searches By Country", data, true, true, Locale.ENGLISH);
 		
 		ChartPanel mypanel = new ChartPanel(chart);
-		panel_3.add(mypanel, "name_149179152001100");
 
+		panel_3.add(mypanel, "name_149179152001100");
 		
 	}
-	
 }
