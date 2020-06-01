@@ -29,6 +29,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
+import java.awt.Color;
+import java.awt.Toolkit;
 
 public class GUI extends JFrame {
 	
@@ -63,6 +65,8 @@ public class GUI extends JFrame {
 
 	
 	public GUI(ArrayList<Sort> sort) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\DEEGAN\\OneDrive - Otago Polytechnic\\IN610 Java\\Java-Assignment-1\\PAssignment\\icon.ico"));
+		setTitle("Coronavirus Trends");
 		
 		this.sort = sort;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +80,9 @@ public class GUI extends JFrame {
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.MAGENTA);
 		tabbedPane.addTab("Home", null, panel, null);
+		tabbedPane.setBackgroundAt(0, Color.LIGHT_GRAY);
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -140,13 +146,17 @@ public class GUI extends JFrame {
 		
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(138, 43, 226));
 		tabbedPane.addTab("Graph", null, panel_1, null);
+		tabbedPane.setBackgroundAt(1, Color.LIGHT_GRAY);
 		
 		panel_3 = new JPanel();
 		panel_1.add(panel_3);
 		
 		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_2, null);
+		panel_2.setBackground(new Color(75, 0, 130));
+		tabbedPane.addTab("Calculator", null, panel_2, null);
+		tabbedPane.setBackgroundAt(2, Color.LIGHT_GRAY);
 		
 		createAPie();
 	}
@@ -195,12 +205,12 @@ public class GUI extends JFrame {
 	{
 		DefaultPieDataset data = new DefaultPieDataset();
 		
-		data.setValue(sort.get(158).getCountry(), sort.get(158).getCoronavirus());
-		data.setValue(sort.get(14).getCountry(), sort.get(14).getCoronavirus());
-		data.setValue(sort.get(237).getCountry(), sort.get(237).getCoronavirus());
+		data.setValue(sort.get(157).getCountry(), sort.get(157).getCoronavirus());
+		data.setValue(sort.get(13).getCountry(), sort.get(13).getCoronavirus());
 		data.setValue(sort.get(236).getCountry(), sort.get(236).getCoronavirus());
-		data.setValue(sort.get(204).getCountry(), sort.get(204).getCoronavirus());
-		data.setValue(sort.get(111).getCountry(), sort.get(111).getCoronavirus());
+		data.setValue(sort.get(235).getCountry(), sort.get(235).getCoronavirus());
+		data.setValue(sort.get(203).getCountry(), sort.get(203).getCoronavirus());
+		data.setValue(sort.get(110).getCountry(), sort.get(110).getCoronavirus());
 		
 		JFreeChart chart = ChartFactory.createPieChart("Coronavirus Searches By Country", data, true, true, Locale.ENGLISH);
 		
