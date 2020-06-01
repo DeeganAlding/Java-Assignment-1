@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 
 public class Main{
 	
-    Sort sort = new Sort();
 	
 	private static Scanner x;
 
@@ -25,8 +24,7 @@ public class Main{
 	}
 		
 		
-		
-//		
+			
 
 }
 
