@@ -39,6 +39,7 @@ import java.awt.Font;
 public class GUI extends JFrame {
 	
 	private ArrayList<Sort> sort;
+	private Utilities utilities;
 	private static JPanel panel_3;
 
 	private JPanel contentPane;
@@ -152,19 +153,19 @@ public class GUI extends JFrame {
 		lblNewLabel.setBounds(10, 53, 266, 32);
 		panel_2.add(lblNewLabel);
 		tabbedPane.setBackgroundAt(2, Color.LIGHT_GRAY);
-		lblNewLabel.setText("Max Coronavirus Searches: " + findMaxCoronavirus());
+		lblNewLabel.setText("Max Coronavirus Searches: " + Utilities.findMaxCoronavirus());
 		
 		JLabel lblNewLabel_1 = new JLabel("Max Coronavirus Searches: ");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(10, 81, 323, 19);
 		panel_2.add(lblNewLabel_1);
-		lblNewLabel_1.setText("Min Coronavirus Searches: " + findMinCoronavirus());
+		lblNewLabel_1.setText("Min Coronavirus Searches: " + Utilities.findMinCoronavirus());
 		
 		JLabel lblNewLabel_2 = new JLabel("Average Coronavirus Searches:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_2.setBounds(10, 102, 323, 19);
 		panel_2.add(lblNewLabel_2);
-		lblNewLabel_2.setText("Average Coronavirus Searches: " + findAverageCoronavirus());
+		lblNewLabel_2.setText("Average Coronavirus Searches: " + Utilities.findAverageCoronavirus());
 		
 		JLabel lblNewLabel_3 = new JLabel("Calculations");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 21));
@@ -175,283 +176,59 @@ public class GUI extends JFrame {
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_5.setBounds(10, 154, 276, 26);
 		panel_2.add(lblNewLabel_5);
-		lblNewLabel_5.setText("Min Test Searches: " + findMinTest());
+		lblNewLabel_5.setText("Min Test Searches: " + Utilities.findMinTest());
 		
 		JLabel lblNewLabel_4 = new JLabel("Max Test Searches: ");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_4.setBounds(10, 132, 292, 32);
 		panel_2.add(lblNewLabel_4);
-		lblNewLabel_4.setText("Max Test Searches: " + findMaxTest());
+		lblNewLabel_4.setText("Max Test Searches: " + Utilities.findMaxTest());
 		
 		JLabel lblNewLabel_6 = new JLabel("Average Test Searches:");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_6.setBounds(10, 175, 266, 25);
 		panel_2.add(lblNewLabel_6);
-		lblNewLabel_6.setText("Average Test Searches: " + findAverageTest());
+		lblNewLabel_6.setText("Average Test Searches: " + Utilities.findAverageTest());
 		
 		JLabel lblNewLabel_7 = new JLabel("Max Symptoms Searches:");
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_7.setBounds(10, 211, 323, 32);
 		panel_2.add(lblNewLabel_7);
-		lblNewLabel_7.setText("Max Symptoms Searches: " + findMaxSymptoms());
+		lblNewLabel_7.setText("Max Symptoms Searches: " + Utilities.findMaxSymptoms());
 		
 		JLabel lblNewLabel_8 = new JLabel("Min Symptoms Searches:");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_8.setBounds(10, 236, 292, 26);
 		panel_2.add(lblNewLabel_8);
-		lblNewLabel_8.setText("Min Symptoms Searches: " + findMinSymptoms());
+		lblNewLabel_8.setText("Min Symptoms Searches: " + Utilities.findMinSymptoms());
 		
 		JLabel lblNewLabel_9 = new JLabel("Average Symptoms Searches:");
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_9.setBounds(10, 258, 363, 26);
 		panel_2.add(lblNewLabel_9);
-		lblNewLabel_9.setText("Average Symptoms Searches: " + findAverageSymptoms());
+		lblNewLabel_9.setText("Average Symptoms Searches: " + Utilities.findAverageSymptoms());
 		
 		JLabel lblNewLabel_10 = new JLabel("Max Cure Searches:");
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_10.setBounds(10, 297, 314, 26);
 		panel_2.add(lblNewLabel_10);
-		lblNewLabel_10.setText("Max Cure Searches: " + findMaxCure());
+		lblNewLabel_10.setText("Max Cure Searches: " + Utilities.findMaxCure());
 		
 		JLabel lblNewLabel_11 = new JLabel("Min Cure Searches:");
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_11.setBounds(10, 319, 276, 26);
 		panel_2.add(lblNewLabel_11);
-		lblNewLabel_11.setText("Min Cure Searches: " + findMinCure());
+		lblNewLabel_11.setText("Min Cure Searches: " + Utilities.findMinCure());
 		
 		JLabel lblNewLabel_12 = new JLabel("Average Cure Searches:");
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_12.setBounds(10, 344, 292, 19);
 		panel_2.add(lblNewLabel_12);
-		lblNewLabel_12.setText("Average Cure Searches: " + findAverageCure());
+		lblNewLabel_12.setText("Average Cure Searches: " + Utilities.findAverageCure());
 		
 		createAPie();
 	}
 	
-	public String findAverageCure() 
-	{
-		int average = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = + sort.get(i).getCure(); 
-			average = test + average;								
-		}
-		
-		average = average / 250;
-	
-		String number = Integer.toString(average);
-		
-		return number;					
-	}
-	
-	public String findMinCure() 
-	{
-		int min = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getCure(); 
-			
-			if (test < min)
-			{
-				min = test;
-			}						
-		}
-		
-		String number = Integer.toString(min);
-		
-		return number;					
-	}
-	
-	
-	public String findMaxCure() 
-	{
-		int max = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getCure(); 
-			
-			if (test > max)
-			{
-				max = test;
-			}						
-		}
-		
-		String number = Integer.toString(max);
-		
-		return number;					
-	}
-	
-	public String findAverageSymptoms() 
-	{
-		int average = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = + sort.get(i).getSymptoms(); 
-			average = test + average;								
-		}
-		
-		average = average / 250;
-	
-		String number = Integer.toString(average);
-		
-		return number;					
-	}
-	
-	public String findMinSymptoms() 
-	{
-		int min = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getSymptoms(); 
-			
-			if (test < min)
-			{
-				min = test;
-			}						
-		}
-		
-		String number = Integer.toString(min);
-		
-		return number;					
-	}
-	
-	
-	public String findMaxSymptoms() 
-	{
-		int max = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getSymptoms(); 
-			
-			if (test > max)
-			{
-				max = test;
-			}						
-		}
-		
-		String number = Integer.toString(max);
-		
-		return number;					
-	}
-	
-	public String findAverageTest() 
-	{
-		int average = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = + sort.get(i).getTest(); 
-			average = test + average;								
-		}
-		
-		average = average / 250;
-	
-		String number = Integer.toString(average);
-		
-		return number;					
-	}
-	
-	public String findMinTest() 
-	{
-		int min = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getTest(); 
-			
-			if (test < min)
-			{
-				min = test;
-			}						
-		}
-		
-		String number = Integer.toString(min);
-		
-		return number;					
-	}
-	
-	
-	public String findMaxTest() 
-	{
-		int max = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getTest(); 
-			
-			if (test > max)
-			{
-				max = test;
-			}						
-		}
-		
-		String number = Integer.toString(max);
-		
-		return number;					
-	}
-	
-	
-	public String findAverageCoronavirus() 
-	{
-		int average = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = + sort.get(i).getCoronavirus(); 
-			average = test + average;								
-		}
-		
-		average = average / 250;
-	
-		String number = Integer.toString(average);
-		
-		return number;					
-	}
-	
-	public String findMinCoronavirus() 
-	{
-		int min = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getCoronavirus(); 
-			
-			if (test < min)
-			{
-				min = test;
-			}						
-		}
-		
-		String number = Integer.toString(min);
-		
-		return number;					
-	}
-	
-	
-	public String findMaxCoronavirus() 
-	{
-		int max = 0;
-		
-		for (int i = 0; i < 250; i++) {
-			
-			int test = sort.get(i).getCoronavirus(); 
-			
-			if (test > max)
-			{
-				max = test;
-			}						
-		}
-		
-		String number = Integer.toString(max);
-		
-		return number;					
-	}
 	
 	public void drawTable()
 	{
