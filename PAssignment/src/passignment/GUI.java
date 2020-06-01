@@ -106,7 +106,7 @@ public class GUI extends JFrame {
 		panel.add(btnNewButton_1);
 		
 		JFormattedTextField frmtdtxtfldEnterCountryHere = new JFormattedTextField();
-		frmtdtxtfldEnterCountryHere.setText("Enter Country Here");
+		frmtdtxtfldEnterCountryHere.setText("Country Name");
 		frmtdtxtfldEnterCountryHere.setBounds(244, 371, 113, 20);
 		panel.add(frmtdtxtfldEnterCountryHere);
 		
@@ -115,22 +115,22 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				tm.setRowCount(0);
-				for (int i = 0; i < 250; i++) {
-					Object[] object = new Object[5];
-					object[0]= sort.get(i).getCountry();
-					object[1]= sort.get(i).getCoronavirus();
-					object[2]= sort.get(i).getTest();
-					object[3]= sort.get(i).getSymptoms();
-					object[4]= sort.get(i).getCure();
-					
-					if (sort.get(i).getCountry().toString() == frmtdtxtfldEnterCountryHere.getValue().toString())
-					{
-						tm.addRow(object);
-						System.out.println(object);
-					}
-						
-				}
 				
+				String corona = frmtdtxtfldEnterCountryHere.getText();
+				for (Sort s: sort) {									
+					
+					if (s.getCountry().toString().equals(corona))
+					{
+						Object[] object = new Object[5];
+						object[0]= s.getCountry();
+						object[1]= s.getCoronavirus();
+						object[2]= s.getTest();
+						object[3]= s.getSymptoms();
+						object[4]= s.getCure();
+						
+						tm.addRow(object);
+					}				
+				}							
 			}
 		});
 		btnNewButton_2.setBounds(367, 370, 89, 23);
@@ -209,4 +209,5 @@ public class GUI extends JFrame {
 
 		
 	}
+	
 }
