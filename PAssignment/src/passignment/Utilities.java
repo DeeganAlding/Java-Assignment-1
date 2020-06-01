@@ -5,11 +5,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Deegan Alding
+ *
+ */
+
 public class Utilities {
 	
 	
 	private static ArrayList<Sort> sort;
 	private static String fileName = "googledata.csv";
+
+/**
+ * Loads csv file and splits data on commas
+ * @param data
+ */
 	
 	public static void load(ArrayList<Sort> data) {
 		String country;
@@ -41,6 +52,11 @@ public class Utilities {
 			
 	}
 	
+/**
+ * Returns average searches for Coronavirus Cure	
+ * @return
+ */
+	
 	public static String findAverageCure() 
 	{
 		int average = 0;
@@ -57,6 +73,11 @@ public class Utilities {
 		
 		return number;					
 	}
+	
+/**
+ * Returns Min searches for Coronavirus Cure
+ * @return
+ */
 	
 	public static String findMinCure() 
 	{
@@ -77,6 +98,10 @@ public class Utilities {
 		return number;					
 	}
 	
+/**
+ * Returns Max searches for Coronavirus Cure
+ * @return
+ */
 	
 	public static String findMaxCure() 
 	{
@@ -97,6 +122,11 @@ public class Utilities {
 		return number;					
 	}
 	
+/**
+ * Returns Average searches for Coronavirus Symptoms
+ * @return
+ */
+	
 	public static String findAverageSymptoms() 
 	{
 		int average = 0;
@@ -113,6 +143,11 @@ public class Utilities {
 		
 		return number;					
 	}
+	
+/**
+ * Returns Min searches for Coronavirus Symptoms
+ * @return
+ */
 	
 	public static String findMinSymptoms() 
 	{
@@ -133,6 +168,10 @@ public class Utilities {
 		return number;					
 	}
 	
+/**
+ * Returns Max searches for Coronavirus Symptoms
+ * @return
+ */
 	
 	public static String findMaxSymptoms() 
 	{
@@ -153,6 +192,11 @@ public class Utilities {
 		return number;					
 	}
 	
+/**
+ * Returns Average searches for Coronavirus Test
+ * @return
+ */
+	
 	public static String findAverageTest() 
 	{
 		int average = 0;
@@ -169,6 +213,11 @@ public class Utilities {
 		
 		return number;					
 	}
+	
+/**
+ * Returns Min searches for Coronavirus Test
+ * @return
+ */
 	
 	public static String findMinTest() 
 	{
@@ -188,6 +237,11 @@ public class Utilities {
 		
 		return number;					
 	}
+	
+/**
+ * Returns Max searches for Coronavirus Test
+ * @return
+ */
 	
 	
 	public static String findMaxTest() 
@@ -209,6 +263,10 @@ public class Utilities {
 		return number;					
 	}
 	
+/**
+ *  Returns Average searches for Coronavirus
+ * @return
+ */
 	
 	public static String findAverageCoronavirus() 
 	{
@@ -226,6 +284,11 @@ public class Utilities {
 		
 		return number;					
 	}
+	
+/**
+ * Returns Min searches for Coronavirus
+ * @return
+ */
 	
 	public static String findMinCoronavirus() 
 	{
@@ -245,6 +308,11 @@ public class Utilities {
 		
 		return number;					
 	}
+	
+/**
+ * Returns Max searches for Coronavirus
+ * @return
+ */
 	
 	
 	public static String findMaxCoronavirus() 
